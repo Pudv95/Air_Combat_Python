@@ -24,7 +24,7 @@ BULLET = pygame.image.load("bullet _left_to_right.png")
 
 FPS = 60
 
-
+# for generating display
 def draw_window():
     WIN.blit(bg_img, (0, 0))
     WIN.blit(JET1, (50, 300))
