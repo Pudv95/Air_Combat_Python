@@ -1,3 +1,4 @@
+import math
 import pygame
 from pygame import mixer
 import random
@@ -19,10 +20,14 @@ mixer.music.play()
 
 JET1 = pygame.image.load("space_ship11.png")
 JET2 = pygame.image.load("space_ship22.png")
-BULLET = pygame.image.load("bullet _left_to_right.png")
-
+BULLET1 = pygame.image.load("bullet _left_to_right.png")
+BULLET2 = pygame.image.load("bullet _left_to_right.png")
+BULLET1 = pygame.transform.scale(BULLET1, (50, 50))
+BULLET2 = pygame.transform.scale(BULLET2, (50, 50))
+BULLET2 = pygame.transform.rotate(BULLET2, 180)
 
 FPS = 60
+
 
 # Coordinates
 # JET1X = 50
@@ -50,16 +55,28 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LCTRL:
+                    WIN.blit(BULLET1, (jet1.x+25, jet1.y+25))
 
         key_pressed = pygame.key.get_pressed()
 
         # JET1
         if key_pressed[pygame.K_w]:
-            jet1.y -= 5
+            if jet1.y <= 0:
+                pass
+            else:
+                jet1.y -= 5
         if key_pressed[pygame.K_s]:
-            jet1.y += 5
+            if jet1.y >= 600:
+                pass
+            else:
+                jet1.y += 5
         if key_pressed[pygame.K_a]:
-            jet1.x -= 5
+            if jet1.x <= 10:
+                pass
+            else:
+                jet1.x -= 5
         if key_pressed[pygame.K_d]:
             if jet1.x >= 450:
                 pass
@@ -68,17 +85,25 @@ def main():
 
         # JET 2
         if key_pressed[pygame.K_UP]:
-            jet2.y -= 5
+            if jet2.y <= 0:
+                pass
+            else:
+                jet2.y -= 5
         if key_pressed[pygame.K_DOWN]:
-            jet2.y += 5
+            if jet2.y >= 600:
+                pass
+            else:
+                jet2.y += 5
         if key_pressed[pygame.K_LEFT]:
             if jet2.x <= 550:
                 pass
             else:
                 jet2.x -= 5
         if key_pressed[pygame.K_RIGHT]:
-            jet2.x += 5
-
+            if jet2.x >= 990:
+                pass
+            else:
+                jet2.x += 5
 
         draw_window(jet1, jet2)
 
