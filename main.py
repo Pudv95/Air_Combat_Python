@@ -28,15 +28,7 @@ BULLET2 = pygame.transform.rotate(BULLET2, 180)
 
 FPS = 60
 
-
-# Coordinates
-# JET1X = 50
-# JET1Y = 300
-#
-# JET2X = 950
-# JET2Y = 300
-
-
+# for generating display
 def draw_window(jet1, jet2):
     WIN.blit(bg_img, (0, 0))
     WIN.blit(JET1, (jet1.x, jet1.y))
