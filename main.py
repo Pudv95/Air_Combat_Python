@@ -4,6 +4,7 @@ from pygame import mixer
 import random
 import os
 
+global jet1_health
 mixer.init() # mixer initialize
 
 pygame.font.init()
@@ -74,7 +75,8 @@ def fire_bullets(cord):
         item1.x += 7
         if item1.x > 1090 or jet2_block.colliderect(item1):
             if jet2_block.colliderect(item1):
-                jet2_health -= 10
+                if jet2_health > 0:
+                    jet2_health -= 10
             bullet_list1.remove(item1)
 
     #for bullet2 movement
@@ -82,7 +84,8 @@ def fire_bullets(cord):
         item2.x -= 7
         if item2.x < 0 or jet1_block.colliderect(item2):
             if jet1_block.colliderect(item2):
-                jet1_health -= 10
+                if jet1_health >0 :
+                    jet1_health -= 10
             bullet_list2.remove(item2) 
 
 
@@ -117,6 +120,7 @@ def draw_window(jet1, jet2 , listb1 ,listb2 , health1 , health2 , hcolor1 , hcol
 
     # drawing and managing health bars
     #Player1
+
     pygame.draw.rect(WIN , hcolor1 , (10 , 45 , health1 , 20),border_radius = 5)
     pygame.draw.rect(WIN , (255 , 255 , 255) , (10 , 45 , max_health , 20) , 4 , 5)
 
@@ -138,6 +142,8 @@ def main():
     global bullet1_Y
     global health1_color
     global health2_color
+    global bullet_list1
+    global bullet_list2
     answer = False
     run = True
     clock = pygame.time.Clock()
@@ -242,12 +248,15 @@ def main():
         if jet1_health == 0 and jet2_health == 0:
             winner_text = "BOTH Player WINS"
             answer = True
+            bullet_list1 = []
             # run = False
-        elif jet1_health <= 0:
+        elif jet1_health == 0:
             winner_text = "Player2 WINS!"
             answer = True
+            bullet_list1 = []
+            bullet_list2 = []
             # run = False
-        elif jet2_health <= 0:
+        elif jet2_health == 0:
             winner_text = "Player1 WINS!"
             answer = True
             # run = False
