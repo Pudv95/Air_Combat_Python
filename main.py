@@ -249,6 +249,7 @@ def main():
             winner_text = "BOTH Player WINS"
             answer = True
             bullet_list1 = []
+            bullet_list2 = []
             # run = False
         elif jet1_health == 0:
             winner_text = "Player2 WINS!"
@@ -259,6 +260,8 @@ def main():
         elif jet2_health == 0:
             winner_text = "Player1 WINS!"
             answer = True
+            bullet_list1 = []
+            bullet_list2 = []
             # run = False
 
         #bullet firing
