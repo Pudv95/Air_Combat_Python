@@ -14,9 +14,11 @@ global default_text , count
 count = 0
 default_text = tk.StringVar() # declared variable for entry widget
 default_text.set("Player1") # set default value of variable
+label_txt = tk.StringVar()
+label_txt.set("Enter the Player1 Name")
 
 def welcome():
-    global default_text , count
+    global default_text , count , label_txt
     name = enter1.get()
     player_name.append(name.upper())
     if count == 1:
@@ -24,13 +26,12 @@ def welcome():
             
     enter1.delete(0,tk.END)
     count = 1
+    label_txt.set("Enter the Player2 Name")
     default_text.set("Player2")
 
 #created a text label 
-text1=tk.Label(entry_window,font=("arial",12,"bold"),bg="black",fg="white",text="Enter the Player1 Name")
+text1=tk.Label(entry_window,font=("arial",12,"bold"),bg="black",fg="white",textvariable = label_txt)
 text1.pack() 
-# text2=tk.Label(entry_window,font=("arial",10,"bold"),bg="black",fg="white",text="Enter the QUANTITY of ITEM:")
-# text2.place(x=10,y=75)
 
 #created a entry widget
 enter1=tk.Entry(entry_window ,font = ("arial" , 12 , "bold"), justify = "center" , width = 35 )

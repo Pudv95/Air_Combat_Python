@@ -53,23 +53,26 @@ powerup_block = pygame.Rect(-100, -100, 50, 50)
 p1Score = 0
 p2Score = 0
 
+# list of bullets
 bullet_list1 = []
 bullet_list2 = []
+
+# maximum nuber of bullets
 max_bull_num_jet1 = 5
 max_bull_num_jet2 = 5
+
+# speed of jets
 jet_speed1 = 5
 jet_speed2 = 5
 
 
-# def draw_bullet(bulletX_cor):
+# health of jets
 jet1_health = 300
-health1_color = (0, 255, 0)
 jet2_health = 300
-health2_color = (0, 255, 0)
 max_health = 300
 
-
-def fire_bullets(cord):
+#firring bullets
+def fire_bullets():
     global jet1_health
     global jet2_health
 
@@ -90,22 +93,22 @@ def fire_bullets(cord):
                 if jet1_health > 0:
                     jet1_health -= 10
             bullet_list2.remove(item2)
-
-
+# ----------------------------------------------------------------------------------------------------------------------------------------------
+# building every thing on screen
 def draw_window(jet1, jet2, listb1, listb2, health1, health2, hcolor1, hcolor2, winstr, ans, power_up, powerup_block, reload, score):
     global max_health
 
     # drawing background image
     WIN.blit(bg_img, (0, 0))
-    # ----------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------------------------------
 
     # generating and drawing Player name
     text1 = text_font1.render(text_input.player_name[0], True, (255, 255, 255))
     WIN.blit(text1, (10, 2))
 
     text2 = text_font1.render(text_input.player_name[1], True, (255, 255, 255))
-    WIN.blit(text2, (960, 2))
-    # -----------------------------------------------------------------------------
+    WIN.blit(text2, (945, 2))
+    # ------------------------------------------------------------------------------------------------------
 
 
     # drawing and firing bullets
@@ -113,19 +116,18 @@ def draw_window(jet1, jet2, listb1, listb2, health1, health2, hcolor1, hcolor2, 
         WIN.blit(BULLET1_img, (itemb1.x, itemb1.y-20))
     for itemb2 in listb2:
         WIN.blit(BULLET2_img, (itemb2.x, itemb2.y-20))
-    # ------------------------------------------------------------------------------
+    # -------------------------------------------------------------------------------------------------------
 
     # drawing jets
     WIN.blit(JET1, (jet1.x, jet1.y))
     WIN.blit(JET2, (jet2.x, jet2.y))
-    # ------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------------------------------
     # powerups
     WIN.blit(power_up, (powerup_block.x, powerup_block.y))
-    # ------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------------------------------
 
     # drawing and managing health bars
     # Player1
-
     pygame.draw.rect(WIN, hcolor1, (10, 45, health1, 20), border_radius=5)
     pygame.draw.rect(WIN, (255, 255, 255), (10, 45, max_health, 20), 4, 5)
 
@@ -133,6 +135,8 @@ def draw_window(jet1, jet2, listb1, listb2, health1, health2, hcolor1, hcolor2, 
     pygame.draw.rect(WIN, hcolor2, (790, 45, health2, 20), border_radius=5)
     pygame.draw.rect(WIN, (255, 255, 255), (790, 45, max_health, 20), 4, 5)
     # -------------------------------------------------------------------------------
+    
+    # declaring winner
     if ans:
         winText = text_font2.render(winstr, True, (255, 255, 255))
         reload_text = text_font2.render(reload, True, (225, 225, 225))
@@ -333,7 +337,7 @@ def main():
                 jet1_health = 300
                 jet2_health = 300
                 winner_text = ""
-                fire_bullets(bullet_list1)
+                fire_bullets()
                 jet1_block.x, jet1_block.y = 50, 300
                 jet2_block.x, jet2_block.y = 950, 300
                 jet_speed1 = 5
@@ -349,7 +353,7 @@ def main():
             # run = False
 
         # bullet firing
-        fire_bullets(bullet_list1)
+        fire_bullets()
 
         # window and other components generating
         draw_window(jet1_block, jet2_block, bullet_list1, bullet_list2, jet1_health, jet2_health, health1_color,
