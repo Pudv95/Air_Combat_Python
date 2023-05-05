@@ -153,8 +153,6 @@ def draw_window(jet1, jet2, listb1, listb2, health1, health2, hcolor1, hcolor2, 
 def main():
 
     # global variables
-    global health1_color
-    global health2_color
     global bullet_list1
     global bullet_list2
     global jet1_health
