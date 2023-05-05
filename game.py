@@ -18,7 +18,6 @@ bg_img = pygame.image.load(os.path.join("Atari_breakout","background.png"))  # b
 bg_img = pygame.transform.scale(bg_img, (2000, 1000))
 mixer.music.load(os.path.join("Atari_breakout","background_music.mp3"))
 mixer.music.play()
-import text_input
 
 # ------
 # initialing font style
@@ -103,11 +102,11 @@ def draw_window(jet1, jet2, listb1, listb2, health1, health2, hcolor1, hcolor2, 
     # ------------------------------------------------------------------------------------------------------
 
     # generating and drawing Player name
-    text1 = text_font1.render(text_input.player_name[0], True, (255, 255, 255))
-    WIN.blit(text1, (10, 2))
+    text1 = text_font1.render("Player1", True, (255, 255, 255))
+    WIN.blit(text1, (20, 2))
 
-    text2 = text_font1.render(text_input.player_name[1], True, (255, 255, 255))
-    WIN.blit(text2, (945, 2))
+    text2 = text_font1.render("Player2", True, (255, 255, 255))
+    WIN.blit(text2, (970, 2))
     # ------------------------------------------------------------------------------------------------------
 
 
