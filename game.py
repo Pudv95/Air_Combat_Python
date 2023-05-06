@@ -181,7 +181,7 @@ def main():
             jet_speed2 = 5
             jet_speed1 = 5
             powerup_block.x = random.randint(10, 990)
-            powerup_block.y = random.randint(10, 600)
+            powerup_block.y = random.randint(20, 600)
             previous = current_time
         if powerup_block.x != -100:
             inside += 1
@@ -236,7 +236,7 @@ def main():
 
         # for JET1
         if key_pressed[pygame.K_w]:
-            if jet1_block.y <= 50:
+            if jet1_block.y <= 90:
                 pass
             else:
                 jet1_block.y -= jet_speed1
@@ -258,7 +258,7 @@ def main():
 
         # for JET 2
         if key_pressed[pygame.K_UP]:
-            if jet2_block.y <= 50:
+            if jet2_block.y <= 90:
                 pass
             else:
                 jet2_block.y -= jet_speed2
