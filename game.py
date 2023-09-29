@@ -97,6 +97,10 @@ def main():
             else:
                 jet2_block.x += jet_speed2
 
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+
 
         winner_text = ""
         reload_text = ""
